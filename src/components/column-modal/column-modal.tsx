@@ -1,5 +1,5 @@
 import styles from './column-modal.module.css';
-
+import { memo } from 'react';
 type ColumnModalProps = {
   isOpen: boolean;
   availableColumns: string[];
@@ -8,16 +8,11 @@ type ColumnModalProps = {
   onClose: () => void;
 };
 
-export const ColumnModal = ({
-  isOpen,
-  availableColumns,
-  selectedColumns,
-  onToggle,
-  onClose,
-}: ColumnModalProps) => {
-  if (!isOpen) {
-    return null;
-  }
+export const ColumnModal = memo(
+  ({ isOpen, availableColumns, selectedColumns, onToggle, onClose }: ColumnModalProps) => {
+    if (!isOpen) {
+      return null;
+    }
 
   return (
     <div className={styles.overlay}>
@@ -46,4 +41,5 @@ export const ColumnModal = ({
       </div>
     </div>
   );
-};
+}
+)
