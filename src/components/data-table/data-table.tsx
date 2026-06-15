@@ -1,6 +1,6 @@
 import type { YearData } from '../../types';
 import { formatNumber } from '../../utils/format-utils';
-import { useMemo } from 'react';
+import { useMemo, memo } from 'react';
 
 import styles from './data-table.module.css';
 
@@ -10,7 +10,7 @@ type DataTableProps = {
   columns: string[];
 };
 
-export const DataTable = ({ data, year, columns }: DataTableProps) => {
+export const DataTable = memo(({ data, year, columns }: DataTableProps) => {
   const record = useMemo(() => {
     return data.find((dataItem) => dataItem.year === year);
   }, [data, year]);
@@ -37,10 +37,11 @@ export const DataTable = ({ data, year, columns }: DataTableProps) => {
   if (!record) {
     return <div className={styles.noData}>No data available for year {year}</div>;
   }
+
   return (
     <table className={styles.table}>
       <tbody>
-        {tableRows.map(({column, label, value}) => (
+        {tableRows.map(({ column, label, value }) => (
           <tr key={column} className={styles.row}>
             <td className={styles.labelCell}>{label}</td>
             <td className={styles.valueCell}>{value}</td>
@@ -49,4 +50,6 @@ export const DataTable = ({ data, year, columns }: DataTableProps) => {
       </tbody>
     </table>
   );
-};
+});
+
+DataTable.displayName = 'DataTable';
