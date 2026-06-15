@@ -1,3 +1,7 @@
 .countryList {
   padding: 16px;
 }
+.countryRow {
+  box-sizing: border-box;
+  padding-bottom: 16px;
+}
