@@ -14,7 +14,6 @@ type CountryListProps = {
   selectedYear: number;
   sortField: 'name' | 'population';
   sortOrder: 'asc' | 'desc';
-  onYearChange: (year: number) => void;
 };
 
 type CountryRowProps = {
@@ -42,7 +41,11 @@ const CountryRow = ({
 
   return (
     <div style={style} className={styles.countryRow}>
-      <CountryCard country={country} selectedYear={selectedYear} selectedColumns={selectedColumns} />
+      <CountryCard
+        country={country}
+        selectedYear={selectedYear}
+        selectedColumns={selectedColumns}
+      />
     </div>
   );
 };

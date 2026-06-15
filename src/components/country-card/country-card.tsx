@@ -38,8 +38,12 @@ export const CountryCard = memo(({ country, selectedYear, selectedColumns }: Cou
       </div>
 
       <div className={styles.stats}>
-        <div>Population ({selectedYear}): {formatNumber(population)}</div>
-        <div>CO₂ Emissions ({selectedYear}): {formatNumber(co2)} tonnes</div>
+        <div>
+          Population ({selectedYear}): {formatNumber(population)}
+        </div>
+        <div>
+          CO₂ Emissions ({selectedYear}): {formatNumber(co2)} tonnes
+        </div>
       </div>
 
       <DataTable data={country.data} year={selectedYear} columns={selectedColumns} />
